@@ -1,10 +1,12 @@
 import express from "express";
 import contactController from '../../controllers/contact-controller.js'
-import schema from '../../schema.js'
-import {isValidId, isEmptyBody} from '../../middlewars/index.js'
+import schema from '../../schemas/schema.js'
+import {isValidId, isEmptyBody, authenticate } from '../../middlewars/index.js'
 import validateBody from "../../decorators/validateBody.js";
 
 const contactsRouter = express.Router()
+
+contactsRouter.use(authenticate);
 
 contactsRouter.get('/', contactController.getAll);
 
