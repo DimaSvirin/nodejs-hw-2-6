@@ -9,4 +9,13 @@ const usersSchema = Joi.object({
     }),
 });
 
-export default usersSchema;
+const userEmailSchema = Joi.object({
+    email: Joi.string().required().messages({
+        'any.required': `missing required name field`
+    }),
+});
+
+export default {
+    usersSchema,
+    userEmailSchema,
+};
